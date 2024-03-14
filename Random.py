@@ -10,8 +10,8 @@ class rand_48:
         self.m = 2**48
     
     def drand48(self):
-        self.seed = (self.a * self.seed + self.c) & (self.m-1)
-        return self.seed / self.m
+        self.seed = (0x5DEECE66D * self.seed + 0XB) % (2**48)
+        return self.seed / (2**48)
 
     def srand48(self, seed):
         self.seed = (seed << 16) + 0x330e

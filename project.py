@@ -18,19 +18,12 @@ RAND = rand_48(upper_bound, lamb, seed)
 NAME_LIST = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 def main():
     print("<<< PROJECT PART I -- process set (n={}) with {} CPU-bound process >>>".format(num, num_cpu))
-    # print("num = ", num)
-    # print("num_cpu = ", num_cpu)
-    # print("seed = ", seed)
-    # print("lambda = ", lamb)
-    # print("upper_bound = ", upper_bound)
-    # print("<<< END >>>")
-    # exit(0)
 
-    for i in range(num_cpu):
-        Proc = proc(RAND, NAME_LIST[i], "CPU")
+    for i in range(num_io):
+        Proc = proc(RAND, NAME_LIST[i], "I/O")
         Proc.print_proc()
-    for j in range(num_io):
-        Proc = proc(RAND, NAME_LIST[num_cpu+j], "I/O")
+    for j in range(num_cpu):
+        Proc = proc(RAND, NAME_LIST[num_cpu+j], "CPU")
         Proc.print_proc()
 
 main()
