@@ -10,15 +10,15 @@ class rand_48:
         self.m = 2**48
     
     def drand48(self):
-        const = (self.a * self.seed + self.c) % self.m
-        return const / self.m
+        self.seed = (self.a * self.seed + self.c) & (self.m-1)
+        return self.seed / self.m
 
     def srand48(self, seed):
         self.seed = (seed << 16) + 0x330e
     
-    def exp_rand48(self):
+    def next_exp(self):
         out = -m.log(self.drand48()) / self.mean_exp
-        if out > self.upper_bound:
-            return self.exp_rand48()
+        if out >= self.upper_bound:
+            return self.next_exp()
         else:
             return out
