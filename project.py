@@ -19,10 +19,10 @@ NAME_LIST = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def main():
     index = 0
-    if num_cpu > 1:
-        print("<<< PROJECT PART I -- process set (n={}) with {} CPU-bound processes >>>".format(num, num_cpu))
-    else:
+    if num_cpu == 1:
         print("<<< PROJECT PART I -- process set (n={}) with {} CPU-bound process >>>".format(num, num_cpu))
+    else:
+        print("<<< PROJECT PART I -- process set (n={}) with {} CPU-bound processes >>>".format(num, num_cpu))
     for i in range(num_io):
         Proc = proc(RAND, NAME_LIST[index], "I/O")
         Proc.print_proc()
