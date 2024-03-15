@@ -37,7 +37,11 @@ class proc():
     def print_proc(self):
         #I/O-bound process A: arrival time {}; {} CPU bursts:
         #print use f"{}" to format the string
-        print(f"{self.bound_type}-bound process {self.id}: arrival time {self.arrival}ms; {self.bursts} CPU bursts:")
+        print(f"{self.bound_type}-bound process {self.id}: arrival time {self.arrival}ms; {self.bursts} CPU burst",end="")
+        if self.bursts > 1:
+            print("s:")
+        else:
+            print(":")
         for cpu,io in self.timing:
             print(f"--> CPU burst {cpu}ms",end="")
             if io != 0:
